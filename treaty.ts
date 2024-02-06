@@ -1,6 +1,7 @@
 import { MyElysiaApp } from "@/app/api/elysia/[...slugs]/route";
 import { edenTreaty } from "@elysiajs/eden";
 
-export const treaty = edenTreaty<MyElysiaApp>(
-  process.env.VERCEL_URL ?? "http://localhost:3000"
-);
+const url = process.env.VERCEL_URL
+  ? "http://" + process.env.VERCEL_URL
+  : "http://localhost:3000";
+export const treaty = edenTreaty<MyElysiaApp>(url);
