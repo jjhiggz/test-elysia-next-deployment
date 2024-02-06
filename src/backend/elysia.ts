@@ -27,3 +27,5 @@ export const elysiaApp = new Elysia({
       name: t.String(),
     }),
   });
+
+elysiaApp.compile();
