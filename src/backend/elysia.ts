@@ -1,12 +1,12 @@
 import { Elysia, t } from "elysia";
-import { protectUnauthenticated } from "./utils/protect";
+// import { protectUnauthenticated } from "./utils/protect";
 
 const dogs = ["doomslayer", "doomslayer", "gloomslayer"];
+
 export const elysiaApp = new Elysia({
   prefix: "/api/elysia",
 })
-  //   .use(protectUnauthenticated({ except: ["get", "post"] }))
-  .get("/", () => "hello Next")
+  // .use(protectUnauthenticated({ except: ["get", "post"] }))
   .get("/dogs", async () => {
     return dogs;
   })
@@ -26,6 +26,5 @@ export const elysiaApp = new Elysia({
     body: t.Object({
       name: t.String(),
     }),
-  });
-
-elysiaApp.compile();
+  })
+  .compile();
