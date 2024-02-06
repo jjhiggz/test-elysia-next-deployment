@@ -5,7 +5,7 @@ const dogs = ["doomslayer", "doomslayer", "gloomslayer"];
 export const elysiaApp = new Elysia({
   prefix: "/api/elysia",
 })
-  .use(protectUnauthenticated({ except: ["get", "post"] }))
+  //   .use(protectUnauthenticated({ except: ["get", "post"] }))
   .get("/", () => "hello Next")
   .get("/dogs", async () => {
     return dogs;
