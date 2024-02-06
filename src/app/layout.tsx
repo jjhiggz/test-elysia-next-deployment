@@ -26,14 +26,17 @@ export default async function RootLayout({
   const user = session?.user?.name;
 
   const { data: dogs, status } = await treaty.api.elysia.dogs.get();
-  console.log({ status });
+  console.log({
+    dogs,
+    status,
+  });
   return (
     <html lang="en">
       <body className={inter.className}>
         <SignInButton />
         <SignOutButton />
         {user}
-        {dogs?.map((dog) => (
+        {dogs?.map?.((dog) => (
           <li key={dog}>{dog}</li>
         ))}
       </body>
