@@ -3,11 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/authOptions";
-import { signIn } from "next-auth/react";
 import { SignInButton } from "./component/SigninButton";
 import { SignOutButton } from "./component/SignoutButton";
-import { redirect } from "next/navigation";
 import { treaty } from "../../treaty";
+import { Dogs } from "./component/Dogs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,16 +25,13 @@ export default async function RootLayout({
   const user = session?.user?.name;
   const { data: dogs } = await treaty.api.elysia.dogs.get();
 
-  console.log({ user, dogs });
   return (
     <html lang="en">
       <body className={inter.className}>
         <SignInButton />
         <SignOutButton />
         {user}
-        {dogs?.map((dog) => (
-          <li key={dog}>{dog}</li>
-        ))}
+        <Dogs />
       </body>
     </html>
   );
