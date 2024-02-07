@@ -24,6 +24,7 @@ export default async function RootLayout({
 
   const user = session?.user?.name;
   const { data: dogs } = await treaty.api.elysia.dogs.get();
+  console.log({ user, dogs });
 
   return (
     <html lang="en">
